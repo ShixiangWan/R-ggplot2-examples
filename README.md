@@ -6,3 +6,5 @@ R语言ggplot2，论文插图
 
 1. Paper HPSLPred
 ![](./paper_HPSLPred/Figure 3.tiff)
+![](./paper_HPSLPred/Figure 3.tiff)
+![](./paper_HPSLPred/demo.jpg)
