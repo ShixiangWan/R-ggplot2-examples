@@ -16,11 +16,12 @@ y = c(98, 49, 22, 13, 10,
       911, 426, 203, 107.5, 85, 
       109, 51, 27.5, 14, 10, 
       653, 352, 139, 78.5, 65)
+y = log(y)
 tgg=data.frame(datasets, x, y)
 ggplot(tgg, aes(x = factor(x), y = y, colour = datasets, group = datasets, shape = datasets)) + 
   geom_line(size=1.2) +
   geom_point(size=5) +
-  scale_y_continuous(breaks=seq(0, 1000, 100)) +
-  labs(x="The number of data nodes", y="Running time (min)") +
+  #scale_y_continuous(breaks=seq(0, 1000, 100)) +
+  labs(x="The number of data nodes", y="log (running time (min))") +
   theme_bw() +
   theme(axis.text=element_text(size=12), axis.title=element_text(size=15))

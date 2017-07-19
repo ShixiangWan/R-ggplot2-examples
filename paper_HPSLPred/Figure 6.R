@@ -1,28 +1,30 @@
-library(ggplot2) # å¼•å…¥ggplot2åŒ…
+library(ggplot2) # ÒıÈëggplot2°ü
 library(grid)
 
-Data <- read.delim("E:\\myProgram\\R\\paper_HPSLPred\\searchBestDimension.txt") # è¯»å…¥æ•°æ®ï¼Œåˆ—ä¸åˆ—ä¹‹é—´ç”¨åˆ¶è¡¨ç¬¦ï¼Œç©ºæ ¼ç¬¦åˆ†å‰²éƒ½å¯ä»¥
+Data <- read.delim("E:\\myProgram\\R\\paper_HPSLPred\\searchBestDimension.txt") # ¶ÁÈëÊı¾İ£¬ÁĞÓëÁĞÖ®¼äÓÃÖÆ±í·û£¬¿Õ¸ñ·û·Ö¸î¶¼¿ÉÒÔ
 p1 <- ggplot(Data, aes(dimension, rate)) +
   geom_point(color="#D86A6C", alpha=1, size = 6) +
   geom_line(size=1.2) +
-  labs(x="First Round", y="AP") +
+  labs(title="First Round", x="feature dimension", y="AP") +
   scale_x_continuous(breaks=seq(10, 350, 30)) +
   scale_y_continuous(labels = scales::percent, breaks=seq(0.60, 0.76, 0.005)) +
   theme_bw() +
   theme(axis.text=element_text(size=12, color = 'black'), 
-        axis.title=element_text(size=15, color = 'black'))
+        axis.title=element_text(size=15, color = 'black'),
+        plot.title=element_text(hjust=0.5))
 
 Data2 <- read.delim("E:\\myProgram\\R\\paper_HPSLPred\\searchBestDimension2.txt")
 p2 <- ggplot(Data2, aes(dimension2, rate2)) +
-  geom_point(color="#D86A6C", alpha=1, size = 10) +
+  geom_point(color="#D86A6C", alpha=1, size = 6) +
   geom_line(size=1.2) +
-  labs(x="Second Round", y="AP") +
+  labs(title="Second Round", x="feature dimension", y="AP") +
   scale_x_continuous(breaks=seq(20, 30, 1)) +
   scale_y_continuous(labels = scales::percent, breaks=seq(0.755, 0.762, 0.0005)) +
   coord_cartesian(ylim=c(0.755, 0.760)) +
   theme_bw() +
   theme(axis.text=element_text(size=12, color = 'black'), 
-        axis.title=element_text(size=15, color = 'black'))
+        axis.title=element_text(size=15, color = 'black'),
+        plot.title=element_text(hjust=0.5))
 
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   require(grid)
@@ -60,4 +62,4 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
-multiplot(p1, p2, cols=1)
+multiplot(p1, p2, cols=2)
