@@ -6,7 +6,7 @@ dt = data.frame(obj = c('IBk','RandomForest', 'J48', 'BRkNN', 'HOMER', 'MLkNN', 
                 group = c('methods of WEKA', 'methods of WEKA', 'methods of WEKA', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'our method'))
 dt$obj = factor(dt$obj, levels=c('IBk','RandomForest', 'J48', 'BRkNN', 'HOMER', 'MLkNN', 'IBLR_ML', 'DMLkNN', 'HPSLPred'))
 dt$group = factor(dt$group, levels=c('methods of WEKA', 'methods of WEKA', 'methods of WEKA', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'methods of Mulan', 'our method'))
-ggplot(dt, aes(x = obj, y = val, fill = group)) + 
+f <- ggplot(dt, aes(x = obj, y = val, fill = group)) + 
   geom_bar(stat = "identity") +
   geom_text(aes(label=val), vjust=-1.0, size=4.5) +
   labs(x="Methods", y="Average Precision (AP)", fill='method') +
@@ -17,4 +17,4 @@ ggplot(dt, aes(x = obj, y = val, fill = group)) +
         axis.title=element_text(size=15, color = 'black')) 
 
 
-
+ggsave(f, file="Figure 4.tiff", dpi=300)
